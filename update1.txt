@@ -1,0 +1,28 @@
+
+新增字段
+
+主体附件
+beian_fj.jcdm_fjzjlx_id
+UPDATE `beian_fj` SET `jcdm_fjzjlx_id` = Fjyt
+
+
+新增网站附件对应用途id
+ALTER TABLE `beian_fj_wzlist`
+ADD COLUMN `jcdm_fjzjlx_id`  int(10) UNSIGNED NULL DEFAULT NULL COMMENT 'jcdm_fjzjlx.id' AFTER `id`;
+正式上把ID刷过来，fjyt刷过来当ID用，兼容上报程序
+UPDATE `beian_fj_wzlist` SET `jcdm_fjzjlx_id`=Fjyt
+
+
+网站附件
+ALTER TABLE `beian_fj_jr`
+ADD COLUMN `jcdm_fjzjlx_id`  int(11) UNSIGNED NULL DEFAULT NULL COMMENT 'jcdm_fjzjlx.id' AFTER `id`;
+把ID刷过来
+UPDATE `beian_fj_jr` SET `jcdm_fjzjlx_id`=Fjyt
+
+
+
+update过的文件
+admin/form_beian_ver_in.php
+admin/form_jieru_ver_in.php
+admin/form_web_ver_in.php
+admin/ajaxact.php
